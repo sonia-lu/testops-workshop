@@ -71,10 +71,9 @@ pipeline {
  
         stage('Run tests') {
             steps {
-                dir('docker_introduction/docker-compose/') {
-                    script {
-                        sh("docker-compose down")
-                    }
+                script {
+                    sh("echo 'hello'")
+ 
                 }
  
             }
@@ -82,9 +81,11 @@ pipeline {
     }
     post {
         always {
-            script {
-                echo 'Cleanup'
-            }
+            dir('docker_introduction/docker-compose/') {
+                    script {
+                        sh("docker-compose down")
+                    }
+                }
         }
     }
 }
