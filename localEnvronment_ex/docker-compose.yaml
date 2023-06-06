@@ -24,6 +24,10 @@ services:
     volumes:
       - './mysql_db:/bitnami'
   testlink:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+    platform: linux/amd64
     image: 'bitnami/testlink:1.9.20-debian-10-r301'
     environment:
       - TESTLINK_USERNAME=admin
@@ -36,9 +40,10 @@ services:
       - TESTLINK_SMTP_PORT=587
       - TESTLINK_SMTP_USER=aaa@aaa.com
       - TESTLINK_SMTP_PASSWORD=your_password
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
     user: root
     ports:
-      - '80:8080'
+      - '81:8080'
       - '443:8443'
     volumes:
       - './testlink_data:/bitnami'
