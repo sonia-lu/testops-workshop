@@ -43,7 +43,7 @@ services:
       - DOCKER_DEFAULT_PLATFORM=linux/amd64
     user: root
     ports:
-      - '81:8080'
+      - '80:8080'
       - '443:8443'
     volumes:
       - './testlink_data:/bitnami'
